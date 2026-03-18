@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_gamification_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.gamification</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="after">
+                <div class="alert alert-info text-center" role="alert" invisible="state not in ('draft', 'sent') or not user_id">
+                    <strong>Gamification Progress: </strong>
+                    <field name="user_id" readonly="1" class="oe_inline"/>
+ has achieved 
+                    <field name="user_target_progress" widget="progressbar" class="oe_inline" style="width: 200px; display: inline-block; vertical-align: middle;"/>
+                    of their <field name="user_target_type" readonly="1" class="oe_inline"/>
+ target!
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
